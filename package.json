@@ -62,8 +62,8 @@
     "dev:server": "nest start --debug 5000 --watch",
     "dev:client": "react-scripts start",
     "build:client": "react-scripts build",
-    "format": "prettier --write \"src/**/*.{ts,tsx}\"",
-    "lint": "eslint \"src/**/*.{ts,tsx}\" --fix",
+    "format": "prettier --write \"{src,server}/**/*.{ts,tsx}\"",
+    "lint": "eslint \"{src,server}/**/*.{ts,tsx}\" --fix",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
