@@ -1,5 +1,6 @@
-import axios from 'axios';
-import { User } from '../../../server/user/models/user.model';
+import axios, { AxiosPromise } from 'axios';
+import { User } from '../../types/User';
 
-export const createUser = (user: User & { password: string }) =>
-  axios.post('/user', user);
+export const createUser = (
+  user: User & { password: string }
+): AxiosPromise<User> => axios.post('/user', user);

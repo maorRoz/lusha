@@ -1,10 +1,15 @@
 import React, { useState, useMemo, useEffect, useCallback } from 'react';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
+import { User } from '../types/User';
 import { createUser } from './api/createUser';
 import { FormLayout } from './style';
 
-export const UserForm = () => {
+export type UserFormProps = {
+  addUser: (user: User) => void;
+};
+
+export const UserForm = ({ addUser }: UserFormProps) => {
   const [error, setError] = useState(false);
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
@@ -27,12 +32,19 @@ export const UserForm = () => {
   const submitUser = useCallback(async () => {
     setError(false);
     try {
-      await createUser({ firstName, lastName, email, password, description });
+      const { data: newUser } = await createUser({
+        firstName,
+        lastName,
+        email,
+        password,
+        description
+      });
+      addUser(newUser);
       resetValues();
     } catch (e) {
       setError(true);
     }
-  }, [firstName, lastName, email, password, description, resetValues]);
+  }, [firstName, lastName, email, password, description, addUser, resetValues]);
 
   const helperText = useMemo(
     () => error && 'Email is either invalid or taken',
@@ -68,7 +80,7 @@ export const UserForm = () => {
       />
       <TextField
         label='Password'
-        /*         type="password" */
+        type='password'
         value={password}
         onChange={(event) => setPassword(event.target.value)}
       />
@@ -77,6 +89,9 @@ export const UserForm = () => {
           label='Description'
           value={description}
           onChange={(event) => setDescription(event.target.value)}
+          multiline
+          rows={2}
+          rowsMax={4}
         />
       </div>
       <Button
