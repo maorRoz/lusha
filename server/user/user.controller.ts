@@ -1,4 +1,11 @@
-import { Controller, Get, Post, Body, ConflictException } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  ConflictException,
+  Query
+} from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 import { UserService } from './user.service';
 import { User } from './models/user.model';
@@ -10,8 +17,10 @@ export class UserController {
   constructor(private readonly userService: UserService) {}
 
   @Get()
-  async getAllUsers(): Promise<Omit<User, 'password'>[]> {
-    const users = await this.userService.getAllUsers();
+  async getAllUsers(
+    @Query('page') page = 0
+  ): Promise<Omit<User, 'password'>[]> {
+    const users = await this.userService.getAllUsers(page);
     return users.map(({ firstName, lastName, email, description }) => ({
       firstName,
       lastName,

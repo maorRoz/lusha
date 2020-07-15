@@ -3,12 +3,16 @@ import { UserForm } from './UserForm';
 import { UsersGrid } from './UsersGrid/UsersGrid';
 import { User } from './types/User';
 
+const LIMIT = 15;
+
 export const App = () => {
   const [users, setUsers] = useState<User[]>([]);
 
   const addUser = useCallback(
     (user: User) => {
-      setUsers(users.concat(user));
+      if (users.length < LIMIT) {
+        setUsers(users.concat(user));
+      }
     },
     [users]
   );
