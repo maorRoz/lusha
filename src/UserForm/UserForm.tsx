@@ -59,18 +59,21 @@ export const UserForm = ({ addUser }: UserFormProps) => {
     <FormLayout>
       <div>
         <TextField
+          data-testid='firstName'
           label='First Name'
           value={firstName}
           onChange={(event) => setFirstName(event.target.value)}
           style={{ marginRight: '2em' }}
         />
         <TextField
+          data-testid='lastName'
           label='Last Name'
           value={lastName}
           onChange={(event) => setLastName(event.target.value)}
         />
       </div>
       <TextField
+        data-testid='email'
         label='Email'
         value={email}
         onChange={(event) => setEmail(event.target.value)}
@@ -79,6 +82,7 @@ export const UserForm = ({ addUser }: UserFormProps) => {
         helperText={helperText}
       />
       <TextField
+        data-testid='password'
         label='Password'
         type='password'
         value={password}
@@ -86,6 +90,7 @@ export const UserForm = ({ addUser }: UserFormProps) => {
       />
       <div>
         <TextField
+          data-testid='description'
           label='Description'
           value={description}
           onChange={(event) => setDescription(event.target.value)}
@@ -95,6 +100,7 @@ export const UserForm = ({ addUser }: UserFormProps) => {
         />
       </div>
       <Button
+        data-testid='submit'
         variant='contained'
         color='primary'
         style={{ marginTop: '20px' }}

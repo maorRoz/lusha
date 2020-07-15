@@ -7,7 +7,7 @@ export type UserCardProps = { user: User };
 
 export const UserCard = ({ user }: UserCardProps) => (
   <UserCardLayout>
-    <img src={UserIcon} />
+    <img src={UserIcon} alt='UserIcon' />
     <div>{user.email}</div>
     <div style={{ color: 'grey', fontWeight: 'bold' }}>
       {user.firstName} {user.lastName}
