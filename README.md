@@ -14,7 +14,7 @@
 # How to run the app
 
 1. execute `yarn install`
-2. execute `yarn build:server`
+2. execute `yarn build:server`(the build creates some errors because of the UI code, but it still manage to create a dist folder for the server)
 3. create a local mongodb database server on port `27017`(default) with admin database. make sure that the connection properties are `user: root` and `password: rootpassword`. Alternatively, you may edit the code to make it fit your kind of mongodb server credentials.
 4. Now you may either execute `yarn start` or `yarn dev` which will start both the server and the client.
 
